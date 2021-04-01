@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "conjunto.h"
+#include <time.h>
+
+int main()
+{
+  int n[]={1,2,3,4,5,6,7,8,9,27,11,12,13,14,15};
+  int n2[]={1,2,3,4,5,26,7,8,9,10,11,12,13,22,15};
+  printf("Crinado primeiro conjunto:\n");
+  
+  Conjunto* A = conjuntoCreate(10);
+  
+  for(int i=0; i<15; i++){
+    conjuntoInsert(A, n[i]);
+      conjuntoPrint(A);
+      putchar('\n');
+  }
+  putchar('\n');
+  printf("\tRemovendo valor 13:\n\n");
+  A = conjuntoRemove(A, 13);
+  conjuntoPrint(A);
+  
+  printf("\n\n\tCriando segundo conjunto:\n");
+  Conjunto* B = conjuntoCreate(10);
+  for(int i=0; i<15; i++){
+    conjuntoInsert(B, n2[i]);
+      conjuntoPrint(B);
+      putchar('\n');
+  }
+
+  printf("\n\n\tIntersecção dos conjuntos:\n");
+  Conjunto* novo = conjuntoCreate(10); 
+  Conjunto* intersec = conjuntoIntersec(A, B, novo);
+  conjuntoPrint(intersec);
+  
+  return 0;
+}
